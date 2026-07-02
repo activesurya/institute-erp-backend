@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: institute-erp-backend
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/institute_erp
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Uncomment for PostgreSQL
+    # url: jdbc:postgresql://localhost:5432/institute_erp
+    # username: postgres
+    # password: password
+    # driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        # Uncomment for PostgreSQL
+        # dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        format_sql: true
+    show-sql: false
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+jwt:
+  secret: your-secret-key-here-change-this-in-production-minimum-256-bits
+  expiration: 86400000 # 24 hours in milliseconds
+
+logging:
+  level:
+    root: INFO
+    com.instituterp: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
